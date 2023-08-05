@@ -4,12 +4,17 @@ import React from "react";
 import { Button } from ".";
 
 const Hero = () => {
+
   const handleScroll = () => {
-    //console.log('clicked');
+    const nextSection = document.getElementById('discover');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
   }
+
   return (
     <div className="landing">
-      <div className="flex-1 pt-36 padding-x">
+      <div className="landing__container">
         <h1 className="landing__title">
           Find, book, or rent a car - quickly and easily!
         </h1>
