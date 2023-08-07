@@ -1,8 +1,6 @@
 
 'use client'
-
 import { ButtonProps } from "@/shared";
-
 
 const Button = ({title, handleClick}: ButtonProps) => {
   return (

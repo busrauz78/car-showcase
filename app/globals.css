@@ -91,14 +91,17 @@
   .home__discover-title {
     @apply text-4xl font-extrabold;
   }
+  .home__filters-container {
+    @apply absolute flex flex-row gap-5 my-5;
+  }
   .home__filters {
-    @apply absolute flex flex-row gap-5
+    @apply flex flex-row gap-5;
   }
   .filter {
     @apply w-fit;
   }
   .filter__container {
-    @apply relative w-fit z-10;
+    @apply relative w-fit
   }
   .filter__button {
     @apply relative w-full min-w-[127px] flex justify-between items-center cursor-default rounded-lg bg-white py-2 px-3 text-left shadow-md sm:text-sm border;
@@ -109,7 +112,31 @@
   .filter__option {
     @apply text-gray-900 relative cursor-default select-none py-2 px-4
   }
-  .filter__option_active {
+  .filter__option-active {
     @apply bg-primary-blue text-white
+  }
+  .filter__placeholder {
+    @apply text-gray-500;
+  }
+  .search {
+    @apply relative w-fit;
+  }
+  .search__container {
+    @apply relative w-full;
+  }
+  .search__input-container {
+    @apply relative w-full min-w-[127px] flex justify-between items-center cursor-default rounded-lg bg-white py-2 px-3 text-left shadow-md sm:text-sm border;
+  }
+  .search__input {
+    @apply w-full border-none outline-none text-sm leading-5 text-gray-900 focus:ring-0
+  }
+  .search__button {
+    @apply absolute inset-y-0 right-0 flex items-center pr-2
+  }
+  .search__options {
+    @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+  }
+  .search__option {
+    @apply relative cursor-default select-none py-2 pl-10 pr-4;
   }
 }

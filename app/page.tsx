@@ -1,8 +1,10 @@
-import {  Filter, Landing } from "@/components";
-import { BRANDS, FUELS, YEARS } from "@/shared";
 import React from "react";
+import {  Filter, Landing, Search } from "@/components";
+import { fetchData, Filters, FUELS, YEARS } from "@/shared";
 
-export default function Home() {
+export default async function Home({searchParams}: HomeProps) {
+  const carsData = await fetchData(searchParams);
+
   return (
     <main className="overflow-hidden">
       <Landing />
@@ -11,10 +13,12 @@ export default function Home() {
         <h2 className="home__discover-title">Car Catalogue</h2>
         <p>Explore out cars you might like</p>
       </div>
-      <div className="home__filters">
-        <Filter options={BRANDS} title="Brand"  />
-        <Filter options={FUELS} title="Fuel"  />
-        <Filter options={YEARS} title="Year"  />
+      <div className="home__filters-container">
+        <Search />
+        <div className="home__filters">
+        <Filter options={FUELS} title="fuel"  />
+        <Filter options={YEARS} title="year"  />
+        </div>
       </div>
     </div>
     </main>
