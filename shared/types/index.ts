@@ -12,3 +12,10 @@ export interface FilterProps {
   title: string;
   options: Option[];
 };
+
+export interface Filters {
+  model?: string;
+  fuel?: string;
+  year?: string;
+};
+

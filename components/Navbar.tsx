@@ -15,7 +15,6 @@ const Navbar = () => {
               className="object-contain"
             />
           </Link>
-
           <Link href="/" className="flex justify-center items-center">
             <span>Sign in</span>
           </Link>
