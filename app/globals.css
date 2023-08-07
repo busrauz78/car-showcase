@@ -139,4 +139,32 @@
   .search__option {
     @apply relative cursor-default select-none py-2 pl-10 pr-4;
   }
+  .car-card {
+    @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl;
+  }
+  .car-card__header {}
+  .car-card__content {
+    @apply mt-10 flex flex-col w-full
+  }
+  .car-card__title {
+    @apply text-[22px] leading-[26px] font-bold capitalize;
+  }
+  .car-card__features {
+    @apply mt-5 flex group-hover:invisible w-full justify-between text-grey
+  }
+  .car-card_feature {
+    @apply flex flex-col justify-center items-center gap-2;
+  }
+  .car-card__feature-text {
+    @apply text-grey text-[12px] leading-[17px]
+  }
+  .car-card__footer {
+    @apply flex flex-row items-baseline justify-between
+  }
+  .car-card__price {
+    @apply text-[20px] font-bold
+  }
+  .car-card__price-text {}
+  .car-card__action {}
+
 }

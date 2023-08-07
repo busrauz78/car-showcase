@@ -1,9 +1,9 @@
 import React from "react";
-import {  Filter, Landing, Search } from "@/components";
-import { fetchData, Filters, FUELS, YEARS } from "@/shared";
+import {  CarCard, Filter, Landing, Search } from "@/components";
+import { fetchData, Filters, FUELS, HomeProps, YEARS } from "@/shared";
 
-export default async function Home({searchParams}: HomeProps) {
-  const carsData = await fetchData(searchParams);
+export default async function Home({ params }: HomeProps) {
+  const carsData = await fetchData(params);
 
   return (
     <main className="overflow-hidden">
@@ -19,6 +19,11 @@ export default async function Home({searchParams}: HomeProps) {
         <Filter options={FUELS} title="fuel"  />
         <Filter options={YEARS} title="year"  />
         </div>
+      </div>
+      <div className="home__cars-container mt-20">
+        {carsData ? <div className="flex flex-row flex-wrap gap-2">
+          {carsData.map(car => <CarCard car={car} />)}
+        </div>: <div>There is no car</div>}
       </div>
     </div>
     </main>
