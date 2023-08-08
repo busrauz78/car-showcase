@@ -1,4 +1,4 @@
-import { FOOTER_LINKS } from '@/shared';
+import { FOOTER_LINKS } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 

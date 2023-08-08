@@ -1,21 +1,37 @@
 "use client";
-import { BRANDS } from '@/shared';
 import { Combobox, Transition } from '@headlessui/react';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { updateSearchParams } from '../shared/utils';
-import { useRouter } from 'next/navigation';
+import { updateSearchParams } from '../utils';
+import { useRouter, useSearchParams  } from 'next/navigation';
+
+import { BRANDS } from '@/constants';
 
 const Search = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [selected, setSelected] = useState('');
   const [query, setQuery] = useState('');
 
   const handleChange = (value: string) => {
     setSelected(value);
-    const pathName = updateSearchParams('model', value);
+    const pathName = updateSearchParams('make', value.toLowerCase());
     router.push(pathName, { scroll: false });
   };
+
+  useEffect(() => {
+    if (searchParams.get('make') !== '') {
+      const matchedBrand = BRANDS.find(brand => brand.toLowerCase() === searchParams.get('make'))
+      if (matchedBrand) {
+        setQuery(matchedBrand);
+        setSelected(matchedBrand);
+      }
+    }
+    return(() => {
+      setQuery('');
+      setSelected('');
+    })
+  }, [searchParams]);
 
   const filteredBrands =
     query === ''
@@ -33,6 +49,7 @@ const Search = () => {
         <div className="search__container">
           <div className="search__input-container">
             <Combobox.Input
+              autoComplete="off"
               id="search"
               className="search__input"
               displayValue={(brand: string) => brand}
