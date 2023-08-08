@@ -55,6 +55,9 @@
   .button {
     @apply bg-primary-blue text-white rounded-full mt-10 flex flex-row relative justify-center items-center py-3 px-6 outline-none;
   }
+  .search-button {
+    @apply bg-primary-blue text-white rounded-full mt-10 flex flex-row relative justify-center items-center py-2 px-4 outline-none;
+  }
   .footer {
     @apply flex flex-col text-black-100  mt-5 border-t border-gray-100;
   }
@@ -92,7 +95,7 @@
     @apply text-4xl font-extrabold;
   }
   .home__filters-container {
-    @apply absolute flex flex-row gap-5 my-5;
+    @apply z-10 absolute flex flex-row gap-5 my-5;
   }
   .home__filters {
     @apply flex flex-row gap-5;
@@ -134,15 +137,26 @@
     @apply absolute inset-y-0 right-0 flex items-center pr-2
   }
   .search__options {
-    @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+    @apply  absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
   }
   .search__option {
     @apply relative cursor-default select-none py-2 pl-10 pr-4;
   }
-  .car-card {
-    @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl;
+  .home__cars-container {
+    @apply mt-20 w-full z-0;
   }
-  .car-card__header {}
+  .home__cars-wrapper {
+    @apply grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14;
+  }
+  .home__error-container {
+    @apply mt-16 flex justify-center items-center flex-col gap-2;
+  }
+  .car-card {
+    @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl relative;
+  }
+  .car-card__header {
+    @apply w-full p-5 flex justify-center;
+  }
   .car-card__content {
     @apply mt-10 flex flex-col w-full
   }
@@ -152,8 +166,8 @@
   .car-card__features {
     @apply mt-5 flex group-hover:invisible w-full justify-between text-grey
   }
-  .car-card_feature {
-    @apply flex flex-col justify-center items-center gap-2;
+  .car-card__feature {
+    @apply w-full	 flex flex-col justify-center items-center gap-2;
   }
   .car-card__feature-text {
     @apply text-grey text-[12px] leading-[17px]
@@ -162,9 +176,10 @@
     @apply flex flex-row items-baseline justify-between
   }
   .car-card__price {
-    @apply text-[20px] font-bold
+    @apply absolute top-0 right-0 py-3 px-5 text-[18px] font-semibold;
   }
-  .car-card__price-text {}
+  .car-card__price-text {
+    @apply text-[20px] font-bold;
+  }
   .car-card__action {}
-
 }

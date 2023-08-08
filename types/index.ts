@@ -14,13 +14,13 @@ export interface FilterProps {
 }
 
 export interface Filters {
-  model?: string;
+  make?: string;
   fuel?: string;
   year?: string;
 }
 
 export interface HomeProps {
-  params: Filters;
+  searchParams: Filters;
 }
 
 export interface Car {

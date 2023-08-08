@@ -1,19 +1,33 @@
 'use client';
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Listbox, Transition } from '@headlessui/react';
-import { FilterProps, Option, updateSearchParams } from '@/shared';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { updateSearchParams } from '@/utils';
+import { FilterProps, Option } from '@/types';
 
 export default function Filter({ title, options }: FilterProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [selected, setSelected] = useState(options[0]);
 
   const handleUpdateParams = (value: Option) => {
     setSelected(value);
-    const pathName = updateSearchParams(title, value.id);
+    const pathName = updateSearchParams(title, value.id.toLowerCase());
     router.push(pathName, { scroll: false });
   };
+
+  useEffect(() => {
+    if (searchParams.get(title) !== '') {
+      const matchedOption = options.find(option => option.name.toLowerCase() === searchParams.get(title))
+      if (matchedOption) {
+        setSelected(matchedOption);
+      }
+    }
+    return(() => {
+      setSelected(options[0]);
+    })
+  }, [searchParams, title, setSelected, options]);
 
   return (
     <div className="filter">
